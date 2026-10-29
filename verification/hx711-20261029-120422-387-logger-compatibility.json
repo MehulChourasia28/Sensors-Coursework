@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "firmware": "nucleo-f411re-hx711-v5",
+  "logger_version": "1.0.1",
+  "accepted_serial_values": 3013,
+  "rejected_complete_lines": 0,
+  "sign_and_gain_verified_on_csv_rows": 2902,
+  "relation_to_v4_for_same_input": "new_output = -10 * old_output",
+  "raw_count_recovery_exact": true,
+  "verified_output_hz": 200.295,
+  "initial_partial_line_excluded": null
+}

@@ -1,0 +1,32 @@
+{
+    "result":  "PASS",
+    "checked_at_utc":  "2026-10-29T11:54:17.5655318Z",
+    "serial_port":  "COM5",
+    "serial_format":  "one signed decimal per line; # diagnostics are ignored by Wind Tunnel Logger",
+    "units":  "zeroed normalized signal (provisional; NOT calibrated m/s)",
+    "zero_offset_counts":  491064,
+    "counts_per_display_unit":  1000000,
+    "normalized_min":  0.003877,
+    "normalized_max":  0.004118,
+    "normalized_mean":  0.0039997288253746993,
+    "interpolation":  "linear between completed ADC conversions",
+    "interpolation_delay_ms":  150,
+    "target_output_hz":  200,
+    "rate_clock":  "PC monotonic receipt time",
+    "firmware_reported_by_board":  [
+                                       "# FIRMWARE=nucleo-f411re-hx711-v4; MCU=STM32F411RE; HSI=16000000; UART=115200"
+                                   ],
+    "configuration_reported_by_board":  [
+                                            "# HX711 channel=A gain=128 DOUT=PA8 SCK=PA9; power=3V3; measured raw counts in ADC comments"
+                                        ],
+    "samples":  2869,
+    "samples_per_second":  200.404,
+    "measured_adc_samples":  153,
+    "measured_adc_hz":  10.154,
+    "raw_min":  494941,
+    "raw_max":  495182,
+    "saturated_samples":  0,
+    "csv_file":  "hx711-20261029-115401-541.csv",
+    "serial_transcript":  "hx711-20261029-115401-541-serial.txt",
+    "scope":  "Digital communication, resting zero and display normalization, and interpolated publication rate. Actual ADC rate is separate; nonzero airspeed calibration is not available."
+}

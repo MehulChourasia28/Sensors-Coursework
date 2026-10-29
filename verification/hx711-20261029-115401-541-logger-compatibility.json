@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "logger_release": "wind-tunnel-logger-v1.0.0",
+  "accepted_decimal_samples": 3007,
+  "rejected_complete_lines": 0,
+  "csv_samples_checked_for_exact_raw_recovery": 2869,
+  "raw_recovery_exact": true,
+  "display_units": "normalized zeroed signal; NOT calibrated m/s",
+  "zero_offset_counts": 491064,
+  "counts_per_unit": 1000000,
+  "verified_output_hz": 200.404,
+  "resting_normalized_mean": 0.0039997288253747
+}

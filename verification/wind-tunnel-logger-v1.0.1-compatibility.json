@@ -1,0 +1,27 @@
+{
+  "result": "PASS",
+  "checked_at_utc": "2026-10-29T11:57:39.552417+00:00",
+  "logger_release": "wind-tunnel-logger-v1.0.1",
+  "source_url": "https://github.com/Dkaka/COMP0219_Tutorials/blob/wind-tunnel-logger-v1.0.1/src/wind_tunnel_logger/app.py",
+  "downloaded_executable": "C:\\Users\\HariOm\\Downloads\\WindTunnelLogger.exe",
+  "executable_sha256": "3fd85a4e1485852340029a467253618702776387ae463528d6ddb1d66d7ce36a",
+  "matches_official_release_checksum": true,
+  "unchanged_behaviour_compared_with_v1_0_0": {
+    "StudentSerial": true,
+    "SerialLines": true,
+    "MainWindow._row": true,
+    "MainWindow.on_student": true,
+    "MainWindow.write_logs": true,
+    "LOG_HEADER": true
+  },
+  "captured_firmware": "nucleo-f411re-hx711-v4",
+  "captured_transcript": "verification\\hx711-20261029-115401-541-serial.txt",
+  "accepted_real_captured_values": 3007,
+  "rejected_complete_lines": 0,
+  "ignored_diagnostic_lines": 193,
+  "signed_decimal_edge_cases_passed": true,
+  "partial_line_at_attachment_excluded": null,
+  "last_hardware_output_hz": 200.404,
+  "firmware_changes_required": false,
+  "scope": "Exact v1.0.1 parser and CSV/serial source comparison using real serial capture; executable checksum verified. No new GUI session or tunnel calibration was automated."
+}

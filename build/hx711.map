@@ -1,0 +1,267 @@
+
+Discarded input sections
+
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .text          0x00000000        0x0 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .data          0x00000000        0x0 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .bss           0x00000000        0x0 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .text          0x00000000        0x0 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .data          0x00000000        0x0 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .bss           0x00000000        0x0 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .debug_macro   0x00000000      0xa54 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .debug_macro   0x00000000       0x22 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .debug_macro   0x00000000      0x34e C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .debug_macro   0x00000000       0x2e C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .text          0x00000000        0x0 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .data          0x00000000        0x0 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .bss           0x00000000        0x0 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_macro   0x00000000      0xa54 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_macro   0x00000000       0x22 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_macro   0x00000000      0x34e C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_macro   0x00000000       0x2e C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_macro   0x00000000       0x40 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+ .group         0x00000000        0xc C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+ .text          0x00000000        0x0 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+ .data          0x00000000        0x0 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+ .bss           0x00000000        0x0 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+ .debug_macro   0x00000000      0xa54 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+ .debug_macro   0x00000000       0x22 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+ .debug_macro   0x00000000      0x34e C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00080000         xr
+RAM              0x20000000         0x00020000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+LOAD C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+LOAD C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+LOAD C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+                0x20020000                _stack_top = (ORIGIN (RAM) + LENGTH (RAM))
+
+.vectors        0x08000000       0x40
+ *(.vectors)
+ .vectors       0x08000000       0x40 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+                0x08000000                vectors
+
+.text           0x08000040      0x8ec
+ *(.text*)
+ .text.fault_handler
+                0x08000040        0x2 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ *fill*         0x08000042        0x2 
+ .text.announce
+                0x08000044       0x94 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .text.reset_handler
+                0x080000d8      0x1ec C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+                0x080000d8                reset_handler
+ .text.systick_handler
+                0x080002c4       0x10 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+                0x080002c4                systick_handler
+ .text.board_init
+                0x080002d4       0x98 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+                0x080002d4                board_init
+ .text.millis   0x0800036c        0xc C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+                0x0800036c                millis
+ .text.delay_us
+                0x08000378       0x14 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+                0x08000378                delay_us
+ .text.serial_poll
+                0x0800038c       0x3c C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+                0x0800038c                serial_poll
+ .text.delay_ms
+                0x080003c8       0x1c C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+                0x080003c8                delay_ms
+ .text.serial_write
+                0x080003e4       0x3c C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+                0x080003e4                serial_write
+ .text.serial_unsigned
+                0x08000420       0x2c C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+                0x08000420                serial_unsigned
+ .text.serial_signed
+                0x0800044c       0x1c C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+                0x0800044c                serial_signed
+ .text.led_set  0x08000468       0x14 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+                0x08000468                led_set
+ .text.hx711_is_ready
+                0x0800047c       0x14 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+                0x0800047c                hx711_is_ready
+ .text.hx711_reset
+                0x08000490       0x1c C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+                0x08000490                hx711_reset
+ .text.hx711_init
+                0x080004ac       0x44 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+                0x080004ac                hx711_init
+ .text.hx711_read
+                0x080004f0       0xa8 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+                0x080004f0                hx711_read
+ .text.interpolation_clear
+                0x08000598        0xc C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+                0x08000598                interpolation_clear
+ .text.interpolation_push
+                0x080005a4       0x3e C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+                0x080005a4                interpolation_push
+ .text.interpolation_at
+                0x080005e2       0x66 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+                0x080005e2                interpolation_at
+ *(.rodata*)
+ .rodata.announce.str1.1
+                0x08000648      0x17d C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+                                0x180 (size before relaxing)
+ .rodata.reset_handler.str1.1
+                0x080007c5      0x166 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .rodata.serial_signed.str1.1
+                0x0800092b        0x2 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+                0x08000930                . = ALIGN (0x4)
+ *fill*         0x0800092b        0x1 
+
+.glue_7         0x0800092c        0x0
+ .glue_7        0x0800092c        0x0 linker stubs
+
+.glue_7t        0x0800092c        0x0
+ .glue_7t       0x0800092c        0x0 linker stubs
+
+.vfp11_veneer   0x0800092c        0x0
+ .vfp11_veneer  0x0800092c        0x0 linker stubs
+
+.v4_bx          0x0800092c        0x0
+ .v4_bx         0x0800092c        0x0 linker stubs
+
+.iplt           0x0800092c        0x0
+ .iplt          0x0800092c        0x0 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+
+.rel.dyn        0x0800092c        0x0
+ .rel.iplt      0x0800092c        0x0 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+
+.data           0x20000000        0x0 load address 0x0800092c
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _data_start = .
+ *(.data*)
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _data_end = .
+                0x0800092c                _data_load = LOADADDR (.data)
+
+.igot.plt       0x20000000        0x0 load address 0x0800092c
+ .igot.plt      0x20000000        0x0 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+
+.bss            0x20000000      0x20c load address 0x0800092c
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _bss_start = .
+ *(.bss*)
+ .bss.serial_buffer
+                0x20000000      0x200 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .bss.serial_head
+                0x20000200        0x4 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .bss.serial_tail
+                0x20000204        0x4 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .bss.uptime_ms
+                0x20000208        0x4 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ *(COMMON)
+                0x2000020c                . = ALIGN (0x4)
+                0x2000020c                _bss_end = .
+OUTPUT(C:\Mehul\UCL\Sensors\build\hx711.elf elf32-littlearm)
+
+.debug_info     0x00000000     0x104f
+ .debug_info    0x00000000      0x7da C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_info    0x000007da      0x2e2 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .debug_info    0x00000abc      0x341 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_info    0x00000dfd      0x252 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+
+.debug_abbrev   0x00000000      0x64b
+ .debug_abbrev  0x00000000      0x213 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_abbrev  0x00000213      0x161 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .debug_abbrev  0x00000374      0x1a3 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_abbrev  0x00000517      0x134 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+
+.debug_loc      0x00000000      0x70d
+ .debug_loc     0x00000000      0x2cd C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_loc     0x000002cd       0xe6 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .debug_loc     0x000003b3      0x157 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_loc     0x0000050a      0x203 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+
+.debug_aranges  0x00000000      0x100
+ .debug_aranges
+                0x00000000       0x30 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_aranges
+                0x00000030       0x68 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .debug_aranges
+                0x00000098       0x38 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_aranges
+                0x000000d0       0x30 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+
+.debug_ranges   0x00000000      0x218
+ .debug_ranges  0x00000000       0xc0 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_ranges  0x000000c0       0x70 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .debug_ranges  0x00000130       0x90 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_ranges  0x000001c0       0x58 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+
+.debug_macro    0x00000000      0xfb0
+ .debug_macro   0x00000000       0x58 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_macro   0x00000058      0xa54 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_macro   0x00000aac       0x22 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_macro   0x00000ace      0x34e C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_macro   0x00000e1c       0x2e C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_macro   0x00000e4a       0x40 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_macro   0x00000e8a       0x10 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_macro   0x00000e9a       0x8a C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .debug_macro   0x00000f24       0x4f C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_macro   0x00000f73       0x3d C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+
+.debug_line     0x00000000      0x6f4
+ .debug_line    0x00000000      0x1f0 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_line    0x000001f0      0x1e9 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .debug_line    0x000003d9      0x1b5 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_line    0x0000058e      0x166 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+
+.debug_str      0x00000000     0x3e24
+ .debug_str     0x00000000     0x3b14 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+                               0x3c9b (size before relaxing)
+ .debug_str     0x00003b14      0x258 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+                               0x3b83 (size before relaxing)
+ .debug_str     0x00003d6c       0x62 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+                               0x3aab (size before relaxing)
+ .debug_str     0x00003dce       0x56 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+                               0x38cf (size before relaxing)
+
+.comment        0x00000000       0x7e
+ .comment       0x00000000       0x7e C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+                                 0x7f (size before relaxing)
+ .comment       0x0000007e       0x7f C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .comment       0x0000007e       0x7f C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .comment       0x0000007e       0x7f C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+
+.ARM.attributes
+                0x00000000       0x33
+ .ARM.attributes
+                0x00000000       0x33 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .ARM.attributes
+                0x00000033       0x33 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .ARM.attributes
+                0x00000066       0x33 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .ARM.attributes
+                0x00000099       0x33 C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o
+
+.debug_frame    0x00000000      0x218
+ .debug_frame   0x00000000       0x68 C:\Users\HariOm\AppData\Local\Temp\ccrZTFbs.o
+ .debug_frame   0x00000068       0xe0 C:\Users\HariOm\AppData\Local\Temp\cct4aShT.o
+ .debug_frame   0x00000148       0x74 C:\Users\HariOm\AppData\Local\Temp\ccx6lWuz.o
+ .debug_frame   0x000001bc       0x5c C:\Users\HariOm\AppData\Local\Temp\ccLtLPGA.o

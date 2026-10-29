@@ -1,0 +1,16 @@
+{
+  "measured_at_utc": "2026-10-29T11:50:02.776946+00:00",
+  "condition": "User confirms load sensor resting; expected wind speed close to zero",
+  "source_transcript": "verification\\hx711-20261029-114836-613-serial.txt",
+  "measured_adc_samples": 153,
+  "mean_counts": 491063.7254901961,
+  "zero_offset_counts": 491064,
+  "stddev_counts": 36.877149409991155,
+  "minimum_counts": 490936,
+  "maximum_counts": 491179,
+  "counts_per_display_unit": 1000000,
+  "display_formula": "(interpolated_raw_counts - zero_offset_counts) / 1000000",
+  "inverse_formula": "interpolated_raw_counts = displayed_value * 1000000 + zero_offset_counts",
+  "units": "normalized zeroed ADC counts; NOT calibrated m/s",
+  "nonzero_speed_calibration_available": false
+}

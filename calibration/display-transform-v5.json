@@ -1,0 +1,11 @@
+{
+  "firmware": "nucleo-f411re-hx711-v5",
+  "zero_offset_counts": 491064,
+  "counts_per_display_unit": 100000,
+  "polarity": -1,
+  "gain_relative_to_v4": 10,
+  "display_formula": "(491064 - interpolated_raw_counts) / 100000",
+  "inverse_formula": "interpolated_raw_counts = 491064 - displayed_value * 100000",
+  "units": "provisional normalized signal; NOT calibrated m/s",
+  "zero_measurement_record": "hx711-20261029-114836-613-zero.json"
+}

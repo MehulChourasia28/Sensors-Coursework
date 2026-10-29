@@ -1,0 +1,27 @@
+{
+    "result":  "PASS",
+    "checked_at_utc":  "2026-10-29T11:35:24.3207788Z",
+    "serial_port":  "COM5",
+    "serial_format":  "one signed integer per line; # diagnostics are ignored by Wind Tunnel Logger",
+    "units":  "interpolated raw_counts (uncalibrated; not m/s)",
+    "interpolation":  "linear between completed ADC conversions",
+    "interpolation_delay_ms":  150,
+    "target_output_hz":  200,
+    "rate_clock":  "PC monotonic receipt time",
+    "firmware_reported_by_board":  [
+                                       "# FIRMWARE=nucleo-f411re-hx711-v3; MCU=STM32F411RE; HSI=16000000; UART=115200"
+                                   ],
+    "configuration_reported_by_board":  [
+                                            "# HX711 channel=A gain=128 DOUT=PA8 SCK=PA9; power=3V3; raw counts only"
+                                        ],
+    "samples":  3014,
+    "samples_per_second":  201.372,
+    "measured_adc_samples":  152,
+    "measured_adc_hz":  10.152,
+    "raw_min":  489693,
+    "raw_max":  489958,
+    "saturated_samples":  0,
+    "csv_file":  "hx711-20261029-113507-659.csv",
+    "serial_transcript":  "hx711-20261029-113507-659-serial.txt",
+    "scope":  "Digital HX711 communication and interpolated publication rate. Actual ADC rate is reported separately; no physical calibration is applied."
+}

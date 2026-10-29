@@ -1,0 +1,38 @@
+[
+    {
+        "dtr":  false,
+        "rts":  false,
+        "bytes":  0,
+        "numeric_lines":  0,
+        "example_lines":  [
+
+                          ]
+    },
+    {
+        "dtr":  true,
+        "rts":  true,
+        "bytes":  0,
+        "numeric_lines":  0,
+        "example_lines":  [
+
+                          ]
+    },
+    {
+        "dtr":  true,
+        "rts":  false,
+        "bytes":  0,
+        "numeric_lines":  0,
+        "example_lines":  [
+
+                          ]
+    },
+    {
+        "dtr":  false,
+        "rts":  true,
+        "bytes":  0,
+        "numeric_lines":  0,
+        "example_lines":  [
+
+                          ]
+    }
+]

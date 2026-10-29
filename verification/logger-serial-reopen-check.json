@@ -1,0 +1,35 @@
+[
+    {
+        "dtr":  false,
+        "rts":  false,
+        "bytes":  688,
+        "numeric_lines":  37,
+        "examples":  [
+                         "490054",
+                         "490032",
+                         "489967"
+                     ]
+    },
+    {
+        "dtr":  true,
+        "rts":  true,
+        "bytes":  720,
+        "numeric_lines":  34,
+        "examples":  [
+                         "489417",
+                         "489239",
+                         "489294"
+                     ]
+    },
+    {
+        "dtr":  false,
+        "rts":  false,
+        "bytes":  481,
+        "numeric_lines":  32,
+        "examples":  [
+                         "492413",
+                         "491989",
+                         "491724"
+                     ]
+    }
+]

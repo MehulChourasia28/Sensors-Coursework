@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "logger_release": "wind-tunnel-logger-v1.0.0",
+  "source": "https://github.com/Dkaka/COMP0219_Tutorials/blob/wind-tunnel-logger-v1.0.0/src/wind_tunnel_logger/app.py",
+  "parser": "StudentSerial._handle (executed directly from release source via AST)",
+  "captured_firmware": "nucleo-f411re-hx711-v2",
+  "accepted_samples": 154,
+  "rejected_lines": 0,
+  "ignored_diagnostic_lines": 21,
+  "raw_counts_preserved_exactly": true,
+  "example_readings": [
+    489864,
+    489896,
+    489876,
+    489853,
+    489881
+  ],
+  "note": "Tests the release parser with real captured serial data; does not automate the GUI or collect a tunnel reference."
+}

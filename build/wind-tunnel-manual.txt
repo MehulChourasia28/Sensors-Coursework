@@ -1,0 +1,410 @@
+Wind Tunnel Logger
+
+Student user manual
+COMP0219 Sensors and Signal Conditioning - 2026/2027 wind tunnel setup
+
+                                        Figure 1: Wind Tunnel Logger during a tunnel run (example data).
+Version 1.0.0 - Author: Shengyang Zhuang - October 2026
+Live plot and logging of your airspeed sensor against the wind tunnel's own airspeed reading.
+Contents
+
+1. What Wind Tunnel Logger does                                      3
+
+What your board must do . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+
+2. What you need                                                     5
+
+3. Install Wind Tunnel Logger                                        5
+
+Option A - Windows program (recommended, no Python needed) . . . . . . . . . . . . . . . . . . . . . . . . 5
+
+Option B - pip install (Windows, macOS or Linux, Python 3.9 or newer) . . . . . . . . . . . . . . . . . . . . . 5
+
+4. Prepare your board                                                6
+
+5. Zero the wind tunnel (every session)                              6
+
+Step A - zero the tunnel's pressure display (start of a session) . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+
+Step B - the software zero in Wind Tunnel Logger (automatic) . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+
+6. At the tunnel, step by step                                       8
+
+On the wood tunnel (GIGA pitot tube) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+
+Using a Mac or Linux . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+
+7. Reading the screen                                                10
+
+8. Looking at a saved run                                            10
+
+9. Your saved files                                                  11
+
+10. Bench test at home (simulated ground truth)                      11
+
+11. Troubleshooting                                                  12
+
+Getting help . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+
+Wind Tunnel Logger 1.0.0 - Student User Manual - COMP0219 2026/2027  Page 2
+1. What Wind Tunnel Logger does
+
+Wind Tunnel Logger shows your sensor's airspeed next to the wind tunnel's own airspeed reading, live, and
+saves both to CSV files. The tunnel's reading is the ground truth. The lab has two tunnels, and each has its
+own ground truth, which you plug into your laptop by USB:
+
+White tunnel (TecQuipment): its pressure sensor, through its Wood tunnel: a GIGA pitot tube (Arduino GIGA R1 on top, its
+
+VDAS box. Pick Ground truth: Wind tunnel.  probe in the tunnel). Pick Ground truth: GIGA pitot tube.
+
+Figure 2: The two tunnels and their ground truth.
+
+                                              Figure 3: The main window during a run (example data).
+
+The window, from top to bottom:
+· Toolbar: Start Logging, Re-zero tunnel, Plot run, Open logs folder, Help, and on the right Your board
+
+    (your sensor's port) with Refresh and Connect.
+· Settings row: Ground truth (Wind tunnel, Simulated, or a GIGA pitot tube while one is plugged in, see
+
+    section 6), your Team name, today's Air pressure and Air temperature.
+· Readouts: the tunnel's speed (cyan) and your sensor's speed (magenta). Under your reading: your port
+
+    and the rate your board achieves (it must reach 200 Hz).
+· Status lines: what the program is doing and anything that needs your attention, in red.
+
+Wind Tunnel Logger 1.0.0 - Student User Manual - COMP0219 2026/2027  Page 3
+· Live plot: the last 15 s. The shaded cyan band is the range the true speed can be in, given the tunnel
+    sensor's resolution of 1 Pa; it is wide at low speed (see section 7).
+
+What your board must do
+
+· Appear as a USB serial port on the laptop (a NUCLEO does: STMicroelectronics STLink Virtual COM Port).
+· Print one speed in m/s per line, as a plain number, for example 5.432.
+· Stream at 200 Hz, at 115200 baud.
+
+/* in your 200 Hz loop, once per estimate (v in m/s) */
+printf("%.3f\r\n", v);
+
+Wind Tunnel Logger 1.0.0 - Student User Manual - COMP0219 2026/2027  Page 4
+2. What you need
+
+Item                               Why
+A laptop                           Windows 10 or 11 (tested). macOS and Linux should also work with the pip
+                                   version; see Using a Mac or Linux in section 6.
+Internet, once                     To download Wind Tunnel Logger.
+Your board and its USB cable       A data cable, not a charge-only cable.
+White tunnel: its VDAS box's USB   USB-B (printer type) at the box end; it stays at the tunnel.
+cable
+Wood tunnel: the GIGA's USB cable  USB-C at the GIGA end; it stays at the tunnel.
+
+TIP  You don't need TecQuipment's VDAS software: Wind Tunnel Logger talks to the white tunnel's
+
+     VDAS box, and to the wood tunnel's GIGA, directly. If the VDAS software is open on your laptop,
+
+     close it.
+
+3. Install Wind Tunnel Logger
+
+Both versions are on the course GitHub Releases page, under Assets of the latest release:
+
+https://github.com/Dkaka/COMP0219_Tutorials/releases
+
+Option A - Windows program (recommended, no Python needed)
+
+1 Download WindTunnelLogger.exe and move it somewhere you'll find it again, for example your
+    Desktop or Documents.
+
+2 Double-click it. The window takes a few seconds to appear: the program unpacks itself each time it
+    starts.
+
+3 If Windows shows "Windows protected your PC", click More info, then Run anyway. This appears
+    because the program isn't code-signed; it is safe to run.
+
+TIP  If your antivirus moves the file to quarantine, restore it or use Option B. Programs packaged with
+
+     Python are sometimes flagged by mistake.
+
+Option B - pip install (Windows, macOS or Linux, Python 3.9 or newer)
+
+In a terminal (PowerShell on Windows, Terminal on a Mac), run:
+
+python -m pip install https://github.com/Dkaka/COMP0219_Tutorials/releases/download/
+       wind-tunnel-logger-v1.0.0/wind_tunnel_logger-1.0.0-py3-none-any.whl
+
+Type it as one line (it is only wrapped here to fit the page). Or download
+wind_tunnel_logger-1.0.0-py3-none-any.whl from the Releases page and run python -m pip
+install wind_tunnel_logger-1.0.0-py3-none-any.whl in the folder you saved it to. On macOS or
+Linux, type python3 instead of python. Then start the program with:
+
+wind-tunnel-logger
+
+If that command isn't found, use python -m wind_tunnel_logger. To update later, install the newer
+.whl file the same way.
+
+Wind Tunnel Logger 1.0.0 - Student User Manual - COMP0219 2026/2027                                   Page 5
+4. Prepare your board
+
+· Flash your firmware so the board prints one speed in m/s per line at 200 Hz, 115200 baud (section 1).
+· Close every other program that might use the board's port: PuTTY, CoolTerm, the STM32CubeIDE serial
+
+    console, an Arduino serial monitor. Only one program can open a port at a time.
+· Find the port: in Windows, open Device Manager, then Ports (COM & LPT); a NUCLEO appears as
+
+    STMicroelectronics STLink Virtual COM Port (COMx). On a Mac it is /dev/tty.usbmodem....
+· Test at home first with the simulated ground truth (section 10): you'll see straight away whether your
+
+    board connects, sends numbers and reaches 200 Hz.
+
+5. Zero the wind tunnel (every session)
+
+WHY         A pressure sensor never reads exactly 0 Pa in still air: it has a small offset, here a few pascals.
+            Airspeed comes from the pressure the pitot tube sees, v = sqrt(2 p / ), and at low speed that
+            pressure is tiny. At 2 m/s it is only about 2.4 Pa, the same size as the offset. Left in, the offset
+            makes low speeds read far too high (table below). Zeroing measures the offset with the fan off
+            and removes it from every reading.
+
+True speed  Pressure the pitot sees  Reading with a 2.5 Pa offset left in  Error
+2 m/s       2.4 Pa                   2.86 m/s                              +43 %
+4.5 m/s     12.2 Pa                  4.94 m/s                              +10 %
+10 m/s      60.2 Pa                  10.21 m/s                             +2 %
+
+On the white tunnel there are two zeros: the tunnel's own pressure display (step A, at the start of a
+session) and Wind Tunnel Logger's software zero (step B, automatic every time you start it). On the wood
+tunnel, skip both: the GIGA zeroes itself when you pick it (section 6, On the wood tunnel), also with the fan
+off.
+
+Step A - zero the tunnel's pressure display (start of a session)
+
+Skip this step if your TA has already done it today.
+
+1 Switch on the tunnel's instrument power and wait 10-15 minutes: the pressure sensor drifts while it
+    warms up.
+
+2 Make sure the fan is OFF and has stopped, nothing is blowing at the tunnel, and wait about 30 s for
+    the air to settle.
+
+3 On the tunnel's pressure display module (the small AFA5 module whose LCD shows the pressure), press
+    and hold the zero button for at least 4 seconds. The display should then read 0 or very close to it.
+
+IMPORTANT   Never hold the zero button while switching the power on: that starts the module's calibration
+            mode (the display shows - - - - or CAL). If it happens, switch the power off again without pressing
+            anything else: the calibration is then left unchanged.
+
+Step B - the software zero in Wind Tunnel Logger (automatic)
+
+As soon as the tunnel's data arrives after the program starts (and again whenever you switch Ground truth
+back to Wind tunnel), it averages 5 s of tunnel readings with the fan off and removes that offset from then
+on. Until the data arrives, the status line shows Waiting for the tunnel's data to zero it. Keep the fan OFF
+until the status line stops showing Zeroing the tunnel reading:
+
+Wind Tunnel Logger 1.0.0 - Student User Manual - COMP0219 2026/2027               Page 6
+                                                     Figure 4: Zeroing in progress: keep the fan off.
+
+When it finishes, the status line shows tunnel offset, normally between about -3 and +3 Pa. If the fan was
+running during the zero, the program can tell (the reading is far from 0), uses a typical offset of +3 Pa
+instead, and warns you in red:
+
+                         Figure 5: The zero was taken with the fan running. Stop the fan and press Re-zero tunnel.
+
+Press Re-zero tunnel (fan OFF), with the fan stopped and the air still, whenever:
+· you see that red warning;
+· the tunnel's instrument power was switched off and on, or you did step A again;
+· with the fan off, the tunnel reading isn't close to 0 m/s (up to about 1 m/s is normal, see section 7);
+· before an important logged run, if you can stop the fan.
+
+TIP  If your own sensor needs a zero too, do it at the same moment, with the fan off.
+
+Wind Tunnel Logger 1.0.0 - Student User Manual - COMP0219 2026/2027                                                 Page 7
+6. At the tunnel, step by step
+
+1 Fan OFF. Plug the tunnel's ground truth into your laptop by USB: the VDAS box on the white tunnel,
+    the GIGA on the wood tunnel (section 1).
+
+2 Start Wind Tunnel Logger and pick Ground truth: Wind tunnel on the white tunnel, GIGA pitot tube
+    (COMx) on the wood tunnel.
+
+3 Within a few seconds Wind Tunnel Logger receives the tunnel's data: the status line changes from
+    Waiting for the tunnel's data (or the GIGA's data) to Zeroing .... Nothing else to open: if TecQuipment's
+    VDAS software is running, close it.
+
+4 Wait for the zero to finish (section 5).
+
+5 Fill in Team (used in your file names), today's Air pressure in hPa (from a lab barometer or a weather
+    service's surface pressure) and the Air temperature in °C. These set the air density used to turn the
+    tunnel's pressure into speed.
+
+6 Plug in your board, click Refresh, pick its port under Your board and click Connect. Your reading starts
+    to update; check the rate under it is close to 200 Hz and not red.
+
+7 Start the fan at your first speed and let it settle.
+
+8 Click Start Logging. Run your test: the assessed range is 2-10 m/s, including steps and ramps.
+
+9 Click Stop & Save. Accept the suggested file name (team, date and time) or type your own, and click
+    Save.
+
+10 When you have finished, close Wind Tunnel Logger.
+
+Until the tunnel reading arrives, the status line says what is missing, for example when the VDAS box isn't
+plugged in or the tunnel's instrument power is off:
+
+                                                Figure 6: No tunnel data yet: the status line says why.
+
+On the wood tunnel (GIGA pitot tube)
+
+The wood tunnel's ground truth is a WindSpeedGiga pitot tube: an Arduino GIGA R1 whose pitot probe
+sits in the tunnel. While it is plugged in, Ground truth also offers GIGA pitot tube (COMx), and its port is
+no longer listed under Your board. Keep the fan OFF when you pick it:
+
+· The program sends the GIGA its calibration (LEQ 102.177 m and C 1, from config.yaml) with today's
+    air pressure and temperature. The GIGA forgets LEQ whenever it loses power, and then reads 50-60 %
+    low: so the program uses none of its readings until the GIGA confirms these values, and sends them
+    again whenever it restarts.
+
+· The GIGA zeroes itself on the board in about 2 s (Re-zero GIGA repeats it). The fan must be off, or the
+    GIGA's two tubes pushed into each other.
+
+· Its calibration is within about ±3 % at 8-14 m/s and was only checked from 4 to 14 m/s. Above its
+    sensor's range (125 Pa, about 14 m/s) its readings aren't used.
+
+Wind Tunnel Logger 1.0.0 - Student User Manual - COMP0219 2026/2027  Page 8
+· Saved runs end in _giga.
+
+Using a Mac or Linux
+
+Install with pip (section 3, option B). Wind Tunnel Logger reads the VDAS box on macOS and Linux too, but
+it has only been tested on Windows: try it at home in simulated mode (section 10), and at the tunnel. On
+Linux, reading USB devices needs a permission rule (section 11). If it doesn't work, plug your board into a
+teammate's Windows laptop, run Wind Tunnel Logger there and copy the saved files afterwards.
+
+                                                 Figure 7: Logging: the button now reads Stop & Save.
+
+                      Figure 8: After Stop & Save: the three files of the run. Plot this run opens the plots of section 8.
+
+Wind Tunnel Logger 1.0.0 - Student User Manual - COMP0219 2026/2027  Page 9
+7. Reading the screen
+
+What you see                     Meaning
+Tunnel ground truth m/s
+dp ... Pa (raw ..., offset ...)  The tunnel's airspeed, from its pressure reading after the zero, using today's air
+Your sensor m/s                  density.
+COM3 199.2 Hz (target 200)
+last 10 s mean ... difference    The pressure behind that speed, the raw value from the VDAS box, and the zero
+Shaded cyan band                 offset being removed.
+
+Red status lines                 The last value your board sent.
+
+                                 Your port and the average rate over the last 5 s. Red if it's below 196 Hz, or if
+                                 lines arrive that aren't numbers (the last bad line is shown).
+
+                                 Both speeds averaged over 10 s, and how far your sensor is from the tunnel.
+
+                                 Where the true speed can be, given the tunnel sensor reports whole pascals (±1
+                                 Pa). It is wide at low speed because a 1 Pa step is a big change in speed there:
+                                 about ±0.8 m/s at 1 m/s, ±0.2 m/s at 4.5 m/s and ±0.08 m/s at 10 m/s.
+
+                                 Something needs your attention: no data, fan running during the zero, your
+                                 board not sending.
+
+TIP  With the fan off, the tunnel may show up to about 1 m/s instead of 0. That is normal: a reading of
+
+     1 Pa already corresponds to about 1.3 m/s. The same limit is why the assessment starts at 2 m/s.
+
+8. Looking at a saved run
+
+Plot this run (after saving) or Plot run... (any time; pick the run's _aligned.csv) opens three plots:
+
+                                                             Figure 9: A saved run (example data).      Page 10
+Wind Tunnel Logger 1.0.0 - Student User Manual - COMP0219 2026/2027
+· Speed over time: every sample of your sensor (magenta) and every tunnel reading (cyan dots, a few
+    per second).
+
+· Your sensor vs tunnel: one dot per tunnel reading, paired with your nearest sample. On the dashed 1:1
+    line means exactly right.
+
+· Error vs tunnel: your sensor minus the tunnel, against speed. It shows at which speeds your sensor
+    reads high or low.
+
+9. Your saved files
+
+Every run is saved as three CSV files in Documents\Wind Tunnel Logger\logs (click Open logs folder):
+
+File                               Contents
+team3_20261022_143005_vdas.csv
+                                   Every tunnel reading: time, speed, raw and zero-corrected
+team3_20261022_143005_student.csv  pressure.
+team3_20261022_143005_aligned.csv
+                                   Every sample from your board, with the time it arrived.
+
+                                   Each tunnel reading paired with your nearest sample (columns
+                                   ground_truth_mps and student_mps). Use this one to work out
+                                   your error statistics (MSE, bias, standard deviation) for the
+                                   report.
+
+Runs made with the simulated ground truth end in _simulated, and runs with a GIGA pitot tube as
+ground truth in _giga, so they can't be mistaken for tunnel data. Keep your files: the module team uses the
+same format for assessment.
+
+10. Bench test at home (simulated ground truth)
+
+No tunnel needed. Set Ground truth to Simulated (bench test): the program generates a made-up
+tunnel speed, so you can check that your board connects, sends plain numbers, reaches 200 Hz and that
+logging and plotting work. The simulated speed is not real wind; don't compare your sensor with it.
+
+Figure 10: Simulated ground truth for bench tests.
+
+Wind Tunnel Logger 1.0.0 - Student User Manual - COMP0219 2026/2027  Page 11
+11. Troubleshooting
+
+Problem                                What to do
+
+Red NO DATA from the tunnel -          Check the VDAS box's USB cable and that the tunnel's instrument power is on.
+tunnel's VDAS box not found            Close TecQuipment's VDAS software if it is open.
+
+Red ... the VDAS box sends no data     Check the tunnel's instrument power, then unplug and replug the box's USB
+                                       cable. Close TecQuipment's VDAS software if it is open.
+
+Red ... none from pressure cell 1      The AFA5 module's instance switch isn't set to 1: ask your TA.
+
+Linux: VDAS box not found although it  Allow access to it, then unplug and replug it: echo 'SUBSYSTEM=="hidraw",
+is plugged in                          ATTRS{idVendor}=="1781", MODE="0666"' | sudo tee
+                                       /etc/udev/rules.d/99-vdas.rules, then sudo udevadm control --reload.
+
+Red the fan was running                Stop the fan, wait for still air, press Re-zero tunnel.
+
+Tunnel reads far from 0 with the fan Press Re-zero tunnel; if it stays off, do step A of section 5 (or ask your TA).
+off
+
+Red The GIGA pitot tube hasn't         It is still starting, or isn't running the WindSpeedGiga firmware. Unplug and
+confirmed LEQ ...                      replug it; the end of that line shows what it reports.
+
+Red The GIGA rejected its zero         Air was moving. Stop the fan (or push the GIGA's two tubes into each other)
+                                       and press Re-zero GIGA.
+
+cannot open COMx                       Another program has the port open (PuTTY, CubeIDE console, serial monitor):
+                                       close it. Or the board was unplugged: plug it in and click Refresh.
+
+Your rate is red                       Your board sends fewer than about 196 lines per second, or some lines aren't
+                                       plain numbers (the bad line is shown). Check your firmware's timing and print
+                                       format.
+
+Your reading doesn't change            Wrong port selected, or the board isn't printing. Try the port in Device
+                                       Manager, or test in simulated mode.
+
+Windows protected your PC              More info, then Run anyway (section 3).
+
+pip: DLL load failed while importing   Your Python is an old Anaconda. Install Python from python.org, or use the
+QtCore                                 .exe.
+
+pip error about a long path            Install from a shorter folder, or tick Disable path length limit at the end of the
+                                       python.org installer.
+
+Getting help
+
+Help in the program repeats the main steps. If the program shows an error, details are saved to
+%APPDATA%\Wind Tunnel Logger\error.log (type that into the File Explorer address bar). Send that file,
+and a screenshot of the window, to your TA.
+
+Wind Tunnel Logger 1.0.0 - Student User Manual - COMP0219 2026/2027                                              Page 12
+

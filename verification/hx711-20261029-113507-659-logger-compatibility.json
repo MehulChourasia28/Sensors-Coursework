@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "logger_release": "wind-tunnel-logger-v1.0.0",
+  "accepted_interpolated_values": 3014,
+  "rejected_complete_lines": 0,
+  "partial_line_at_serial_attachment": "ounts=489903",
+  "published_hz": 201.372,
+  "measured_adc_hz": 10.152,
+  "interpolation_delay_ms": 150,
+  "values_preserved_exactly": true,
+  "method": "Executed StudentSerial._handle from exact release source on complete captured serial lines."
+}

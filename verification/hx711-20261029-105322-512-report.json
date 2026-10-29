@@ -1,0 +1,19 @@
+{
+    "result":  "PASS",
+    "checked_at_utc":  "2026-10-29T10:53:52.9311434Z",
+    "serial_port":  "COM5",
+    "firmware_reported_by_board":  [
+                                       "# FIRMWARE=nucleo-f411re-hx711-v1; MCU=STM32F411RE; HSI=16000000; UART=115200"
+                                   ],
+    "configuration_reported_by_board":  [
+                                            "# HX711 channel=A gain=128 DOUT=PA8 SCK=PA9; power=3V3; raw counts only"
+                                        ],
+    "samples":  306,
+    "samples_per_second":  10.152,
+    "raw_min":  489444,
+    "raw_max":  1071349,
+    "saturated_samples":  0,
+    "csv_file":  "hx711-20261029-105322-512.csv",
+    "serial_transcript":  "hx711-20261029-105322-512-serial.txt",
+    "scope":  "Digital HX711 communication only. A load cell and calibration are required to verify weight measurements."
+}

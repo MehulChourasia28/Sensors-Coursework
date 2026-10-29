@@ -1,0 +1,9 @@
+{
+    "process_id":  25496,
+    "port":  "COM5",
+    "baud":  115200,
+    "transcript_path":  "C:\\Mehul\\UCL\\Sensors\\verification\\load-cell-live-20261029-105427-345-serial.txt",
+    "console_path":  "C:\\Mehul\\UCL\\Sensors\\verification\\load-cell-live-20261029-105427-345-console.txt",
+    "started_at_utc":  "2026-10-29T10:54:27.6061667Z",
+    "stopped_for_wind_tunnel_logger_at_utc":  "2026-10-29T10:59:39.0276016Z"
+}
