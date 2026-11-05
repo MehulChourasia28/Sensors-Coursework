@@ -1,0 +1,12 @@
+{
+  "result": "PASS_IMPLEMENTATION_AND_PROTOCOL_ONLY",
+  "hardware_report": "verification\\hx711-20261104-154326-585-report.json",
+  "logger_version": "1.0.1",
+  "logger_handler": "exact StudentSerial._handle AST from release source",
+  "numeric_lines_accepted": 3006,
+  "rejected_lines": 0,
+  "positive_csv_outputs_checked": 1445,
+  "max_inverse_adc_integer_residual_counts": 0.002324298315215856,
+  "threshold_counts": 0.05,
+  "scope": "Checks logger parsing and deployed nonlinear conversion consistency. No reference wind speed or aerodynamic accuracy validation."
+}

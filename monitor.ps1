@@ -5,6 +5,23 @@ param(
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
+if (-not [Console]::IsInputRedirected) {
+    # Classic Windows console selection can otherwise pause serial acquisition.
+    Add-Type -TypeDefinition @'
+using System;
+using System.Runtime.InteropServices;
+public static class SerialMonitorConsole {
+    [DllImport("kernel32.dll")] public static extern IntPtr GetStdHandle(int id);
+    [DllImport("kernel32.dll")] public static extern bool GetConsoleMode(IntPtr handle, out uint mode);
+    [DllImport("kernel32.dll")] public static extern bool SetConsoleMode(IntPtr handle, uint mode);
+}
+'@
+    $consoleInput = [SerialMonitorConsole]::GetStdHandle(-10)
+    $consoleMode = [uint32]0
+    if ([SerialMonitorConsole]::GetConsoleMode($consoleInput, [ref]$consoleMode)) {
+        $null = [SerialMonitorConsole]::SetConsoleMode($consoleInput, (($consoleMode -band 4294967231L) -bor 0x80))
+    }
+}
 if (-not $Port) {
     $ports = @([System.IO.Ports.SerialPort]::GetPortNames())
     if ($ports.Count -ne 1) { throw "Found $($ports.Count) serial ports. Pass -Port COM5 explicitly." }
@@ -16,6 +33,7 @@ $writer = $null
 
 try {
     $serial.Open()
+    $serial.DiscardInBuffer()
     if ($TranscriptFile) {
         $fullPath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($TranscriptFile)
         $file = [IO.File]::Open($fullPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::Read)
@@ -23,7 +41,7 @@ try {
         $writer.AutoFlush = $true
     }
     Write-Host "Serial monitor: $Port, 115200 baud, 8N1. Ctrl+C stops."
-    Write-Host 'Numeric output is a zeroed normalized signal, not calibrated airspeed. ADC comments contain measured raw counts.'
+    Write-Host 'The board reports its running firmware, units and calibration in # diagnostic lines. Secure the mount; fan OFF and masses removed during startup tare. Wind-speed accuracy remains unvalidated.'
     $timer = [Diagnostics.Stopwatch]::StartNew()
     $lastActivity = 0.0
     while ($true) {

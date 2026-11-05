@@ -1,0 +1,305 @@
+{
+  "decision": "Partially usable for diagnostics and a provisional pre-fall gain; insufficient for a validated or transferable wind calibration.",
+  "conservative_movement_cutoff_s": 22.6,
+  "exact_first_instability_time_known": false,
+  "movement_cutoff_timestamp": "2026-11-04T17:10:45.083595991+00:00",
+  "duration_s": 50.15024399757385,
+  "student_rows": 10013,
+  "reference_rows": 201,
+  "mean_student_line_rate_hz": 199.64010544962366,
+  "mean_reference_rate_hz": 3.9985696377961264,
+  "reference_nonzero_rows": 52,
+  "reference_nonzero_interval_s": [
+    16.392486810684204,
+    29.14151096343994
+  ],
+  "excluded_after_fall_fraction": 0.5493541367197867,
+  "final_reference_zero_from_s": 29.39170479774475,
+  "nearest_pair_max_time_error_ms": 7.287025451660156,
+  "student_rows_sharing_receipt_timestamps": 6507,
+  "reference_pressure_grid_pa": [
+    -45.0,
+    -44.0,
+    -43.0,
+    -42.0,
+    -41.0,
+    -40.0,
+    -39.0,
+    -38.0,
+    -36.0,
+    -35.0,
+    -32.0,
+    -30.0,
+    -27.0,
+    -23.0,
+    -20.0,
+    -19.0,
+    -18.0,
+    -17.0,
+    -15.0,
+    -13.0,
+    -11.0,
+    -10.0,
+    -9.0,
+    -8.0,
+    -7.0,
+    -6.0,
+    -5.0,
+    -4.0,
+    -3.0,
+    -2.0,
+    -1.0,
+    0.0
+  ],
+  "reference_density_implied_by_saved_speed_kg_m3": 1.204118303015305,
+  "one_pa_reference_speed_mps": 1.2887848402058817,
+  "reference_pressure_sign": "Negative nonzero pressure; exact logger release uses abs(pressure) for speed. Negative sign alone does not invalidate this file.",
+  "initial_baseline": {
+    "n": 2895,
+    "mean": 0.028994053886010365,
+    "median": 0.0,
+    "stddev": 0.05658822788835532,
+    "minimum": 0.0,
+    "maximum": 0.236406,
+    "distinct_values": 82
+  },
+  "final_failed_baseline": {
+    "n": 3627,
+    "mean": 3.8772299523021783,
+    "median": 3.877432,
+    "stddev": 0.004560036184936295,
+    "minimum": 3.859331,
+    "maximum": 3.893171,
+    "distinct_values": 318
+  },
+  "final_equivalent_load_g": 20.555158385704562,
+  "provisional_fit": {
+    "status": "EXPLORATORY_CANDIDATE_NOT_A_VALIDATED_CALIBRATION",
+    "equation": "corrected_mps = gain * current_v7_mps",
+    "gain": 0.5476270692863378,
+    "rounded_gain_selected_as_rough_guide": 0.55,
+    "force_space_fit_gain": 0.5575004344703904,
+    "reference_range_mps": [
+      1.822617,
+      5.313796
+    ],
+    "sensor_range_mps": [
+      3.575726,
+      9.053057
+    ],
+    "selected_interval_s": [
+      17.0,
+      22.0
+    ],
+    "selected_pairs": 20,
+    "uncorrected": {
+      "n": 20,
+      "rmse_mps": 2.6636157600757566,
+      "mae_mps": 2.54123235,
+      "bias_mps": 2.54123235,
+      "max_abs_error_mps": 3.739261000000001
+    },
+    "corrected_in_sample": {
+      "n": 20,
+      "rmse_mps": 0.18679108019553506,
+      "mae_mps": 0.16255238736917155,
+      "bias_mps": 0.027690762844478488,
+      "max_abs_error_mps": 0.3560969270078349
+    },
+    "rounded_gain_in_sample": {
+      "n": 20,
+      "rmse_mps": 0.1873103459123684,
+      "mae_mps": 0.16513820750000005,
+      "bias_mps": 0.04087559250000037,
+      "max_abs_error_mps": 0.3346146499999989
+    },
+    "force_space_corrected_in_sample": {
+      "n": 20,
+      "rmse_mps": 0.19558630809654393,
+      "mae_mps": 0.17898510197062129,
+      "bias_mps": 0.08255061919383706,
+      "max_abs_error_mps": 0.31913201245340517
+    },
+    "interpretation": "Describes this short pre-fall mount state. In-sample error is not accuracy; no independent run verifies transfer to a repaired/remounted setup."
+  },
+  "blocked_same_run_checks": [
+    {
+      "description": "earlier half predicts later half",
+      "train_pairs": 10,
+      "test_pairs": 10,
+      "fitted_gain": 0.5316502491525218,
+      "n": 10,
+      "rmse_mps": 0.237317058134865,
+      "mae_mps": 0.1767998997428551,
+      "bias_mps": -0.11968924796143839,
+      "max_abs_error_mps": 0.5007359903580184
+    },
+    {
+      "description": "later half predicts earlier half",
+      "train_pairs": 10,
+      "test_pairs": 10,
+      "fitted_gain": 0.5521291539466368,
+      "n": 10,
+      "rmse_mps": 0.19348480026160583,
+      "mae_mps": 0.17990720476042887,
+      "bias_mps": 0.07685564299270076,
+      "max_abs_error_mps": 0.2506312462234406
+    }
+  ],
+  "interval_sensitivity": [
+    {
+      "start_s": 16.4,
+      "end_s": 22.4,
+      "gain": 0.5551884456643497,
+      "n": 24,
+      "rmse_mps": 0.23253413224127165,
+      "mae_mps": 0.20235403634700835,
+      "bias_mps": 0.05202385173175289,
+      "max_abs_error_mps": 0.5177920951188912
+    },
+    {
+      "start_s": 17,
+      "end_s": 22,
+      "gain": 0.5476270692863378,
+      "n": 20,
+      "rmse_mps": 0.18679108019553506,
+      "mae_mps": 0.16255238736917155,
+      "bias_mps": 0.027690762844478488,
+      "max_abs_error_mps": 0.3560969270078349
+    },
+    {
+      "start_s": 17,
+      "end_s": 21.8,
+      "gain": 0.5423250493212637,
+      "n": 19,
+      "rmse_mps": 0.1707446016518366,
+      "mae_mps": 0.14489691301687743,
+      "bias_mps": 0.019406014482328003,
+      "max_abs_error_mps": 0.3065968893159763
+    },
+    {
+      "start_s": 16.4,
+      "end_s": 20,
+      "gain": 0.518861804037732,
+      "n": 14,
+      "rmse_mps": 0.19106782502553565,
+      "mae_mps": 0.14289840240888654,
+      "bias_mps": -0.0007962439480352991,
+      "max_abs_error_mps": 0.3995856028589353
+    },
+    {
+      "start_s": 20,
+      "end_s": 22.4,
+      "gain": 0.5679271397137455,
+      "n": 10,
+      "rmse_mps": 0.19291138360060622,
+      "mae_mps": 0.17807296433455005,
+      "bias_mps": 0.024523647152314254,
+      "max_abs_error_mps": 0.26015482190745587
+    },
+    {
+      "start_s": 17,
+      "end_s": 19,
+      "gain": 0.5362756198312197,
+      "n": 8,
+      "rmse_mps": 0.19015373456691417,
+      "mae_mps": 0.17280998571297293,
+      "bias_mps": -0.00037726794669487584,
+      "max_abs_error_mps": 0.30753010333029795
+    },
+    {
+      "start_s": 19,
+      "end_s": 22.4,
+      "gain": 0.560490177405658,
+      "n": 14,
+      "rmse_mps": 0.21905296446114567,
+      "mae_mps": 0.19917385892584324,
+      "bias_mps": 0.04429948772098781,
+      "max_abs_error_mps": 0.33466634003744566
+    }
+  ],
+  "timing_sensitivity": [
+    {
+      "sensor_query_shift_s": -1.0,
+      "gain": 0.6766746294574065,
+      "n": 19,
+      "rmse_mps": 0.33441248297046977,
+      "mae_mps": 0.26673489055148947,
+      "bias_mps": 0.03205142666618071,
+      "max_abs_error_mps": 0.6220760726944647
+    },
+    {
+      "sensor_query_shift_s": -0.5,
+      "gain": 0.6041560524621961,
+      "n": 19,
+      "rmse_mps": 0.21269717707928737,
+      "mae_mps": 0.17041439984283474,
+      "bias_mps": 0.03071389844400655,
+      "max_abs_error_mps": 0.38911568618364556
+    },
+    {
+      "sensor_query_shift_s": -0.15,
+      "gain": 0.5605024072189779,
+      "n": 19,
+      "rmse_mps": 0.16687019274418907,
+      "mae_mps": 0.14236996123707246,
+      "bias_mps": 0.023055163573476412,
+      "max_abs_error_mps": 0.29567845231993406
+    },
+    {
+      "sensor_query_shift_s": 0.0,
+      "gain": 0.5423104835667282,
+      "n": 19,
+      "rmse_mps": 0.17080056854965858,
+      "mae_mps": 0.14503280380989894,
+      "bias_mps": 0.019457045018567914,
+      "max_abs_error_mps": 0.30699778039528436
+    },
+    {
+      "sensor_query_shift_s": 0.15,
+      "gain": 0.5258122617989648,
+      "n": 19,
+      "rmse_mps": 0.19385871870111065,
+      "mae_mps": 0.1553808957039692,
+      "bias_mps": 0.015541041515911602,
+      "max_abs_error_mps": 0.33755882911862134
+    },
+    {
+      "sensor_query_shift_s": 0.5,
+      "gain": 0.4861870737025803,
+      "n": 19,
+      "rmse_mps": 0.27298505532777795,
+      "mae_mps": 0.20933133838385598,
+      "bias_mps": 0.006640660935004507,
+      "max_abs_error_mps": 0.5255021797079507
+    }
+  ],
+  "selected_sensor_samples_beyond_35g_equivalent": 10,
+  "limitations": [
+    "No independent validation run or repeated up/down sweeps in the same intact mount state.",
+    "Usable interval is about five seconds and largely transient; no several-second steady plateaus across the range.",
+    "200 serial lines/s contain interpolated HX711 conversions at about 10 Hz; they are not 200 independent sensor measurements/s.",
+    "Reference updates at about 4 Hz, with integer-Pa saved pressure. Low-speed pairs are coarse; sensor and pressure dynamics can differ.",
+    "The logger pairs receipt times but does not compensate the known 150 ms sensor interpolation delay; timing sensitivity is reported separately.",
+    "USB batches share receipt timestamps; the logger sorts (timestamp,value) tuples. Matching was checked with that exact tie-break.",
+    "The true moment of initial mount instability may precede the visible fall; the pre-fall gain is exploratory.",
+    "A large gain correction must not automatically be interpreted as a physical flat-plate drag coefficient.",
+    "Final mechanical offset must not be subtracted from the initial geometry or from m/s values across the whole run."
+  ],
+  "sources": {
+    "student": {
+      "path": "8_20261104_171022_student.csv",
+      "sha256": "b82d9f8092fb0aebc5d2d448e9b41ef08166da7887ad6d80c8ad3a20a891fb47"
+    },
+    "vdas": {
+      "path": "8_20261104_171022_vdas.csv",
+      "sha256": "c83984e899eb5e5924cda884118c846dd9455972c3979da02c0ca9f2d75f3566"
+    },
+    "aligned": {
+      "path": "8_20261104_171022_aligned.csv",
+      "sha256": "5fab56ddf24a8a9a1075b9509cfac579fe7f1b922a4b773758d6fc1f858693f4"
+    }
+  },
+  "analysis_tool_changes_firmware": false,
+  "statistical_reference": "https://www.itl.nist.gov/div898/handbook/mpc/section3/mpc365.htm"
+}

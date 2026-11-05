@@ -15,7 +15,7 @@
 #define DWT_CYCCNT REGISTER(0xe0001004u)
 
 static volatile uint32_t uptime_ms;
-static char serial_buffer[512];
+static char serial_buffer[1024];
 static uint32_t serial_head;
 static uint32_t serial_tail;
 

@@ -1,0 +1,42 @@
+{
+  "method": "broadside plate drag estimate",
+  "firmware": "nucleo-f411re-hx711-v7",
+  "airspeed_accuracy_validated": false,
+  "plate_width_m": 0.15,
+  "plate_height_m": 0.116,
+  "area_m2": 0.0174,
+  "drag_coefficient": 1.28,
+  "drag_coefficient_status": "assumed generic flat-plate value, not measured for this rectangular plate or tunnel",
+  "air_pressure_pa": 101325,
+  "air_temperature_c": 20,
+  "air_conditions_status": "assumed dry air",
+  "air_density_kg_m3": 1.2041183163746156,
+  "gravity_m_s2": 9.80665,
+  "force_polarity": 1,
+  "grams_per_count": -0.00089903368772,
+  "equation": "v_mps = sqrt(2*max(equivalent_mass_g*0.001*g,0)/(rho*Cd*A))",
+  "mps_per_sqrt_gram": 0.8551871081528,
+  "mass_calibrated_range_g": [
+    0,
+    35
+  ],
+  "equivalent_model_speed_at_35g_mps": 5.059355161310205,
+  "user_confirmations": [
+    "Airflow strikes broad plate face straight on",
+    "Distributed load expected approximately uniform",
+    "Wind force follows same load-cell sensing direction as calibration weights"
+  ],
+  "unresolved": [
+    "Effective mounted-plate drag coefficient",
+    "Actual air temperature, pressure and humidity",
+    "Tunnel cross-sectional dimensions and blockage correction",
+    "Actual centre of pressure versus approximately central calibration weights",
+    "Mass/force response beyond 35 g",
+    "Independent wind-speed error and low-speed detection limit"
+  ],
+  "sources": {
+    "drag_equation": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/drag-equation/",
+    "drag_coefficient": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/shape-effects-on-drag/",
+    "air_density": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/equation-of-state/"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "result": "PASS_IMPLEMENTATION_ONLY",
+  "firmware": "nucleo-f411re-hx711-v8",
+  "speed_gain": 0.55,
+  "source_report": "verification/hx711-20261105-091658-873-report.json",
+  "positive_outputs_checked": 2714,
+  "max_inverse_adc_grid_error_counts": 0.0015929215005598962,
+  "scope": "Confirms the declared 0.55 gain is applied once in deployed numeric output. Does not establish airspeed accuracy."
+}

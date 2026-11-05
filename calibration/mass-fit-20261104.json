@@ -1,0 +1,72 @@
+{
+  "units": "grams",
+  "model": "mass_g = (raw_counts - tare_counts) * grams_per_count",
+  "tare_counts_from_capture": 444619.4929577465,
+  "counts_per_gram": -1112.3053714827,
+  "grams_per_count": -0.0008990336877246245,
+  "calibrated_range_g": [
+    0,
+    35.0
+  ],
+  "plateaus": [
+    {
+      "mass_g": 0.0,
+      "start_s": 5.0,
+      "end_s": 12.0,
+      "adc_samples": 71,
+      "mean_counts": 444619.4929577465,
+      "stddev_counts": 159.24275029377873,
+      "min_counts": 444110,
+      "max_counts": 445256,
+      "drift_counts": 73.43730158731341,
+      "fitted_mass_g": -0.0,
+      "residual_g": -0.0,
+      "noise_stddev_g": 0.1431645970400274
+    },
+    {
+      "mass_g": 20.0,
+      "start_s": 15.5,
+      "end_s": 18.7,
+      "adc_samples": 32,
+      "mean_counts": 422274.46875,
+      "stddev_counts": 70.15374101950842,
+      "min_counts": 422155,
+      "max_counts": 422455,
+      "drift_counts": 9.0625,
+      "fitted_mass_g": 20.088929515786333,
+      "residual_g": 0.08892951578633301,
+      "noise_stddev_g": 0.0630705764964469
+    },
+    {
+      "mass_g": 30.0,
+      "start_s": 20.0,
+      "end_s": 24.0,
+      "adc_samples": 41,
+      "mean_counts": 411235.8048780488,
+      "stddev_counts": 73.96695867486885,
+      "min_counts": 411027,
+      "max_counts": 411409,
+      "drift_counts": -6.33571428572759,
+      "fitted_mass_g": 30.013060204139226,
+      "residual_g": 0.013060204139225817,
+      "noise_stddev_g": 0.06649878762724223
+    },
+    {
+      "mass_g": 35.0,
+      "start_s": 26.0,
+      "end_s": 34.0,
+      "adc_samples": 82,
+      "mean_counts": 405757.7804878049,
+      "stddev_counts": 56.19631032004031,
+      "min_counts": 405599,
+      "max_counts": 405892,
+      "drift_counts": 27.317073170735966,
+      "fitted_mass_g": 34.93798867314561,
+      "residual_g": -0.062011326854388926,
+      "noise_stddev_g": 0.05052237610354321
+    }
+  ],
+  "max_abs_residual_g": 0.08892951578633301,
+  "limitations": "Fit residuals are not an independent accuracy test. Same loading geometry and startup-unloaded tare required. Not an airspeed calibration.",
+  "source_transcript": "calibration/mass-sequence-20261104-152148.serial.txt"
+}

@@ -1,0 +1,15 @@
+# FIRMWARE=nucleo-f411re-hx711-v8; MCU=STM32F411RE; HSI=16000000; UART=115200
+# HX711 channel=A gain=128 DOUT=PA8 SCK=PA9; power=3V3; measured raw counts in ADC comments
+# UNITS=m/s; METHOD=plate_drag_estimate; UNVALIDATED_AIRSPEED
+# MASS_CALIBRATION tare_counts=0 grams_per_count=-0.00089903368772 tare_samples=0 ready=0
+# INTERPOLATION=linear; output_hz=200; delay_ms=150; ADC rate unchanged
+# WIND_MODEL area_m2=0.017400
+# WIND_MODEL cd=1.280000
+# WIND_MODEL rho_kg_m3=1.204118
+# WIND_MODEL pressure_pa=101325.000000
+# WIND_MODEL temperature_c=20.000000
+# WIND_MODEL gravity_m_s2=9.806650
+# WIND_MODEL speed_gain=0.550000
+# CALIBRATION=rough_20261104_run; one rounded gain; unstable mount; UNVALIDATED
+# WIND_MODEL force_polarity=1; Cd and air density assumed; no wind-tunnel validation
+# ERROR: HX711_READY_TIMEOUT: DT stayed high; check 3V3, GND, DT and SCK.

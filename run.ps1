@@ -33,9 +33,9 @@ $null = New-Item -ItemType Directory -Path $buildDirectory -Force
 $elf = Join-Path $buildDirectory 'hx711.elf'
 $binary = Join-Path $buildDirectory 'hx711.bin'
 $linkerScript = Join-Path $PSScriptRoot 'firmware\stm32f411re.ld'
-$sources = @('main.c', 'board.c', 'hx711.c', 'interpolation.c') | ForEach-Object { Join-Path $PSScriptRoot "firmware\$_" }
+$sources = @('main.c', 'board.c', 'hx711.c', 'interpolation.c', 'mass_calibration.c', 'wind_model.c') | ForEach-Object { Join-Path $PSScriptRoot "firmware\$_" }
 
-& $Compiler -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -std=c11 -Os -g3 -Wall -Wextra -Werror -ffreestanding -fno-builtin -ffunction-sections -fdata-sections -nostdlib '-Wl,--gc-sections' "-Wl,-Map=$buildDirectory\hx711.map" -T $linkerScript @sources -o $elf
+& $Compiler -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -std=c11 -Os -g3 -Wall -Wextra -Werror -ffreestanding -fno-builtin -ffunction-sections -fdata-sections -nostdlib '-Wl,--gc-sections' "-Wl,-Map=$buildDirectory\hx711.map" -T $linkerScript @sources -lm -lc -lgcc -o $elf
 if ($LASTEXITCODE -ne 0) { throw 'Firmware compilation failed.' }
 & $objcopy -O binary $elf $binary
 if ($LASTEXITCODE -ne 0) { throw 'Binary conversion failed.' }

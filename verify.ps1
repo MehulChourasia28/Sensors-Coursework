@@ -26,13 +26,22 @@ $span = 0.0
 for ($index = 1; $index -lt $rows.Count; ++$index) {
     $span += [double]::Parse($rows[$index].elapsed_ms, [Globalization.CultureInfo]::InvariantCulture) - [double]::Parse($rows[$index - 1].elapsed_ms, [Globalization.CultureInfo]::InvariantCulture)
 }
-$statistics = $rows | ForEach-Object { [long]$_.raw_counts } | Measure-Object -Minimum -Maximum
-$normalizedStatistics = $rows | ForEach-Object { [double]::Parse($_.normalized_signal, [Globalization.CultureInfo]::InvariantCulture) } | Measure-Object -Minimum -Maximum -Average
-$scaleLines = @(Get-Content -LiteralPath $transcriptPath | Where-Object { $_ -match '^# SCALE zero_offset_counts=(-?\d+) counts_per_unit=(\d+) polarity=(-?1)$' })
-if ($scaleLines.Count -eq 0 -or $scaleLines[-1] -notmatch '^# SCALE zero_offset_counts=(-?\d+) counts_per_unit=(\d+) polarity=(-?1)$') { throw 'Display scale metadata missing.' }
+$speedStatistics = $rows | ForEach-Object { [double]::Parse($_.wind_speed_mps, [Globalization.CultureInfo]::InvariantCulture) } | Measure-Object -Minimum -Maximum -Average
+$windModel = @{}
+Get-Content -LiteralPath $transcriptPath | ForEach-Object {
+    if ($_ -match '^# WIND_MODEL (area_m2|cd|rho_kg_m3|gravity_m_s2|pressure_pa|temperature_c|speed_gain)=(-?\d+\.\d+)$') {
+        $windModel[$Matches[1]] = [double]::Parse($Matches[2], [Globalization.CultureInfo]::InvariantCulture)
+    } elseif ($_ -match '^# WIND_MODEL force_polarity=(-?1);') {
+        $windModel.force_polarity = [int]$Matches[1]
+    }
+}
+if ($windModel.Count -ne 8) { throw 'Incomplete reported wind-model assumptions.' }
+$scalePattern = '^# MASS_CALIBRATION tare_counts=(-?\d+) grams_per_count=(-?\d+\.\d+) tare_samples=(\d+) ready=1$'
+$scaleLines = @(Get-Content -LiteralPath $transcriptPath | Where-Object { $_ -match $scalePattern })
+if ($scaleLines.Count -eq 0 -or $scaleLines[-1] -notmatch $scalePattern) { throw 'Ready mass calibration metadata missing.' }
 $zeroOffset = [long]$Matches[1]
-$countsPerUnit = [long]$Matches[2]
-$displayPolarity = [long]$Matches[3]
+$gramsPerCount = [double]::Parse($Matches[2], [Globalization.CultureInfo]::InvariantCulture)
+$tareSamples = [int]$Matches[3]
 $identity = @(Get-Content -LiteralPath $transcriptPath | Where-Object { $_.StartsWith('# FIRMWARE=') } | ForEach-Object { $_.ToString() } | Select-Object -Unique)
 $wiring = @(Get-Content -LiteralPath $transcriptPath | Where-Object { $_.StartsWith('# HX711 channel=') } | ForEach-Object { $_.ToString() } | Select-Object -Unique)
 $measured = @(Get-Content -LiteralPath $transcriptPath | ForEach-Object {
@@ -41,6 +50,8 @@ $measured = @(Get-Content -LiteralPath $transcriptPath | ForEach-Object {
     }
 })
 if ($measured.Count -lt 5) { throw 'Insufficient measured HX711 conversions in the serial transcript.' }
+$statistics = $measured | ForEach-Object { $_.count } | Measure-Object -Minimum -Maximum
+$massStatistics = $measured | ForEach-Object { ($_.count - $zeroOffset) * $gramsPerCount } | Measure-Object -Minimum -Maximum -Average
 $measuredSpan = 0L
 for ($index = 1; $index -lt $measured.Count; ++$index) {
     $interval = ($measured[$index].timestamp - $measured[$index - 1].timestamp + 4294967296L) % 4294967296L
@@ -52,14 +63,22 @@ $report = [ordered]@{
     checked_at_utc = [DateTime]::UtcNow.ToString('o')
     serial_port = $Port
     serial_format = 'one signed decimal per line; # diagnostics are ignored by Wind Tunnel Logger'
-    units = 'zeroed normalized signal (provisional; NOT calibrated m/s)'
-    zero_offset_counts = $zeroOffset
-    counts_per_display_unit = $countsPerUnit
-    display_polarity = $displayPolarity
-    gain_relative_to_v4 = 10
-    normalized_min = $normalizedStatistics.Minimum
-    normalized_max = $normalizedStatistics.Maximum
-    normalized_mean = $normalizedStatistics.Average
+    units = 'm/s (plate-drag estimate; airspeed accuracy UNVALIDATED)'
+    aerodynamic_model = 'v=speed_gain*sqrt(2*max(directed_force_N,0)/(rho*Cd*A)); provisional rough empirical gain'
+    aerodynamic_assumptions_reported_by_board = $windModel
+    airspeed_accuracy_validated = $false
+    startup_tare_counts = $zeroOffset
+    startup_tare_adc_samples = $tareSamples
+    grams_per_count = $gramsPerCount
+    mass_calibrated_range_g = @(0,35)
+    measured_equivalent_mass_min_g = $massStatistics.Minimum
+    measured_equivalent_mass_max_g = $massStatistics.Maximum
+    measured_equivalent_mass_mean_g = $massStatistics.Average
+    wind_speed_min_mps = $speedStatistics.Minimum
+    wind_speed_max_mps = $speedStatistics.Maximum
+    wind_speed_mean_mps = $speedStatistics.Average
+    zero_clipped_output_samples = @($rows | Where-Object { $_.status -eq 'ESTIMATED_AIRSPEED_ZERO_CLIPPED' }).Count
+    outputs_extrapolated_beyond_mass_calibration = @($rows | Where-Object { $_.status -eq 'ESTIMATED_AIRSPEED_EXTRAPOLATED' }).Count
     interpolation = 'linear between completed ADC conversions'
     interpolation_delay_ms = 150
     target_output_hz = 200
@@ -72,10 +91,10 @@ $report = [ordered]@{
     measured_adc_hz = [Math]::Round(($measured.Count - 1) * 1000.0 / $measuredSpan, 3)
     raw_min = $statistics.Minimum
     raw_max = $statistics.Maximum
-    saturated_samples = @($rows | Where-Object { $_.status -eq 'SATURATED' }).Count
+    saturated_samples = @($measured | Where-Object { $_.count -le -8388608 -or $_.count -ge 8388607 }).Count
     csv_file = [IO.Path]::GetFileName($csvPath)
     serial_transcript = [IO.Path]::GetFileName($transcriptPath)
-    scope = 'Digital communication, resting zero and display normalization, and interpolated publication rate. Actual ADC rate is separate; nonzero airspeed calibration is not available.'
+    scope = 'Estimated-m/s output, declared aerodynamic assumptions, startup tare, communication and publication rate. No reference airspeed comparison; this PASS does not establish airspeed accuracy.'
 }
 $report | ConvertTo-Json | Set-Content -LiteralPath $reportPath -Encoding ascii
 Write-Host "Saved verification report: $reportPath"

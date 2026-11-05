@@ -1,0 +1,31 @@
+{
+  "status": "PROVISIONAL_ROUGH_GUIDE",
+  "firmware_version": "nucleo-f411re-hx711-v8",
+  "equation": "output_mps = 0.55 * original_v7_drag_model_mps",
+  "speed_gain": 0.55,
+  "source_run": "8_20261104_171022",
+  "source_assessment": "ground-truth-20261104/assessment.json",
+  "candidate_interval_s": [
+    17,
+    22
+  ],
+  "conservative_exclusion_from_s": 22.6,
+  "exact_first_instability_time_known": false,
+  "model_form": "One rounded speed multiplier; no fitted offset, polynomial, time delay or noise curve.",
+  "independent_accuracy_validated": false,
+  "transfer_after_remount_validated": false,
+  "source_range_reference_mps": [
+    1.822617,
+    5.313796
+  ],
+  "selected_pairs": 20,
+  "diagnostic_rmse_mps": 0.1873103459123684,
+  "interpretation": "User requested using this unstable-mount run only as a rough guide. In-sample fit error is not accuracy.",
+  "upload_verified": true,
+  "upload_status": "Uploaded and verified on COM5 on 2026-11-05; correction remains provisional.",
+  "hardware_verification_report": "verification/hx711-20261105-091658-873-report.json",
+  "verified_at_utc": "2026-11-05T09:17:14.8237046Z",
+  "uploaded_image_sha256": "fbc72e6e2454b91fb1dd885f4e840e145d4ffbbb83cb8a7e70ded2340f3b68ec",
+  "verified_output_hz": 200.911,
+  "resting_check_mean_mps": 0.2429741333824611
+}

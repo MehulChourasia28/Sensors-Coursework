@@ -1,0 +1,54 @@
+{
+    "result":  "PASS",
+    "checked_at_utc":  "2026-11-05T09:15:54.4219063Z",
+    "serial_port":  "COM5",
+    "serial_format":  "one signed decimal per line; # diagnostics are ignored by Wind Tunnel Logger",
+    "units":  "m/s (plate-drag estimate; airspeed accuracy UNVALIDATED)",
+    "aerodynamic_model":  "v=speed_gain*sqrt(2*max(directed_force_N,0)/(rho*Cd*A)); provisional rough empirical gain",
+    "aerodynamic_assumptions_reported_by_board":  {
+                                                      "pressure_pa":  101325,
+                                                      "force_polarity":  1,
+                                                      "cd":  1.28,
+                                                      "area_m2":  0.0174,
+                                                      "temperature_c":  20,
+                                                      "speed_gain":  0.55,
+                                                      "gravity_m_s2":  9.80665,
+                                                      "rho_kg_m3":  1.204118
+                                                  },
+    "airspeed_accuracy_validated":  false,
+    "startup_tare_counts":  500729,
+    "startup_tare_adc_samples":  32,
+    "grams_per_count":  -0.00089903368772,
+    "mass_calibrated_range_g":  [
+                                    0,
+                                    35
+                                ],
+    "measured_equivalent_mass_min_g":  -121.99527528885312,
+    "measured_equivalent_mass_max_g":  8.08321188629052,
+    "measured_equivalent_mass_mean_g":  -8.7239291037761486,
+    "wind_speed_min_mps":  0,
+    "wind_speed_max_mps":  1.336293,
+    "wind_speed_mean_mps":  0.24569401737317578,
+    "zero_clipped_output_samples":  1334,
+    "outputs_extrapolated_beyond_mass_calibration":  0,
+    "interpolation":  "linear between completed ADC conversions",
+    "interpolation_delay_ms":  150,
+    "target_output_hz":  200,
+    "rate_clock":  "PC monotonic receipt time",
+    "firmware_reported_by_board":  [
+                                       "# FIRMWARE=nucleo-f411re-hx711-v8; MCU=STM32F411RE; HSI=16000000; UART=115200"
+                                   ],
+    "configuration_reported_by_board":  [
+                                            "# HX711 channel=A gain=128 DOUT=PA8 SCK=PA9; power=3V3; measured raw counts in ADC comments"
+                                        ],
+    "samples":  2878,
+    "samples_per_second":  199.309,
+    "measured_adc_samples":  153,
+    "measured_adc_hz":  10.188,
+    "raw_min":  491738,
+    "raw_max":  636425,
+    "saturated_samples":  0,
+    "csv_file":  "hx711-20261105-091538-308.csv",
+    "serial_transcript":  "hx711-20261105-091538-308-serial.txt",
+    "scope":  "Estimated-m/s output, declared aerodynamic assumptions, startup tare, communication and publication rate. No reference airspeed comparison; this PASS does not establish airspeed accuracy."
+}
